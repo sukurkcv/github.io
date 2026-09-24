@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>SukurkCV – profesionalus CV per kelias minutes</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f7fb;
+      margin: 0;
+      padding: 0;
+      color: #182230;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: 60px auto;
+      background: white;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+    }
+
+    h1 {
+      font-size: 42px;
+      margin-bottom: 5px;
+    }
+
+    .subtitle {
+      color: #667085;
+      font-size: 18px;
+      margin-bottom: 35px;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      margin-top: 20px;
+      margin-bottom: 7px;
+    }
+
+    input, textarea {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 14px;
+      border: 1px solid #d0d5dd;
+      border-radius: 10px;
+      font-size: 16px;
+    }
+
+    textarea {
+      min-height: 100px;
+    }
+
+    button {
+      width: 100%;
+      margin-top: 30px;
+      padding: 16px;
+      border: 0;
+      border-radius: 12px;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+      background: #111827;
+      color: white;
+    }
+
+    button:hover {
+      opacity: 0.9;
+    }
+
+    #cv {
+      display: none;
+      margin-top: 40px;
+      border-top: 2px solid #eee;
+      padding-top: 30px;
+    }
+
+    .cvName {
+      font-size: 32px;
+      font-weight: bold;
+    }
+
+    .cvJob {
+      font-size: 20px;
+      color: #667085;
+      margin-bottom: 25px;
+    }
+
+    .cvSection {
+      margin-top: 25px;
+    }
+
+    .cvSection h2 {
+      font-size: 18px;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 7px;
+    }
+
+    .printButton {
+      background: #16a34a;
+    }
+
+    @media print {
+      body {
+        background: white;
+      }
+
+      .formArea,
+      .printButton {
+        display: none;
+      }
+
+      .container {
+        box-shadow: none;
+        margin: 0;
+        max-width: 100%;
+      }
+
+      #cv {
+        display: block !important;
+        border: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <div class="formArea">
+
+    <h1>SukurkCV</h1>
+
+    <div class="subtitle">
+      Susikurk profesionalų CV per kelias minutes.
+    </div>
+
+    <label>Vardas ir pavardė</label>
+    <input id="name" placeholder="Jonas Jonaitis">
+
+    <label>Norima pozicija</label>
+    <input id="job" placeholder="Pardavimų vadybininkas">
+
+    <label>El. paštas</label>
+    <input id="email" placeholder="jonas@email.com">
+
+    <label>Telefono numeris</label>
+    <input id="phone" placeholder="+370...">
+
+    <label>Apie mane</label>
+    <textarea id="about"
+      placeholder="Trumpai papasakok apie save ir savo stipriąsias savybes."></textarea>
+
+    <label>Darbo patirtis</label>
+    <textarea id="experience"
+      placeholder="Įmonė, pareigos, metai, ką darei..."></textarea>
+
+    <label>Išsilavinimas</label>
+    <textarea id="education"
+      placeholder="Mokymo įstaiga, studijos, metai..."></textarea>
+
+    <label>Įgūdžiai</label>
+    <textarea id="skills"
+      placeholder="Pardavimai, Excel, klientų aptarnavimas..."></textarea>
+
+    <button onclick="generateCV()">
+      SUKURTI MANO CV
+    </button>
+
+  </div>
+
+
+  <div id="cv">
+
+    <div class="cvName" id="cvName"></div>
+    <div class="cvJob" id="cvJob"></div>
+
+    <div id="cvContact"></div>
+
+    <div class="cvSection">
+      <h2>APIE MANE</h2>
+      <div id="cvAbout"></div>
+    </div>
+
+    <div class="cvSection">
+      <h2>DARBO PATIRTIS</h2>
+      <div id="cvExperience"></div>
+    </div>
+
+    <div class="cvSection">
+      <h2>IŠSILAVINIMAS</h2>
+      <div id="cvEducation"></div>
+    </div>
+
+    <div class="cvSection">
+      <h2>ĮGŪDŽIAI</h2>
+      <div id="cvSkills"></div>
+    </div>
+
+    <button class="printButton" onclick="window.print()">
+      ATSISIŲSTI / SPAUSDINTI PDF
+    </button>
+
+  </div>
+
+</div>
+
+
+<script>
+
+function generateCV() {
+
+  document.getElementById("cvName").innerText =
+    document.getElementById("name").value;
+
+  document.getElementById("cvJob").innerText =
+    document.getElementById("job").value;
+
+  document.getElementById("cvContact").innerText =
+    document.getElementById("email").value +
+    " | " +
+    document.getElementById("phone").value;
+
+  document.getElementById("cvAbout").innerText =
+    document.getElementById("about").value;
+
+  document.getElementById("cvExperience").innerText =
+    document.getElementById("experience").value;
+
+  document.getElementById("cvEducation").innerText =
+    document.getElementById("education").value;
+
+  document.getElementById("cvSkills").innerText =
+    document.getElementById("skills").value;
+
+  document.getElementById("cv").style.display = "block";
+
+  document.getElementById("cv").scrollIntoView({
+    behavior: "smooth"
+  });
+
+}
+
+</script>
+
+</body>
+</html>
